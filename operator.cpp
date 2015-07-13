@@ -67,11 +67,15 @@ CMyString& CMyString::operator=(const CMyString& str)
     strcpy(m_pData,str.m_pData);*/
 
     //在运行完if语句以后，因为出了strTemp的作用域，该实例会自动调用析构函数，把strTemp.m_pData所指向的内存释放掉
+    //而此时strTemp.m_pData指向的是实例原先m_pData指向的内存，并没有释放当前指向的pTemp这一块内存。
+    //所以还是相当与自动使释放掉了this原来的的m_pData，
     if(this!=&str)
     {
         CMyString strTemp(str);//使用构造函数创建一个临时对象
         //交换临时对象与当前对象的m_pData值
+        //pTemp存放临时实例strTemp的m_pData，以保证if结束之后这一块内存没有被释放
         char* pTemp=strTemp.m_pData;
+        //strTemp.m_pData指向m_pData原来的内存地址，所以if结束后是否那个掉的其实是旧地址的内存
         strTemp.m_pData=m_pData;
         m_pData=pTemp;
     }

@@ -1,6 +1,6 @@
 
 #本工程生成三个目标文件 ： netlayer ip_interface himac_test
-all : strtoint link_list tree operator
+all : strtoint link_list tree operator array2search
 .PHONY : all
 CC = gcc
 CC+ = g++
@@ -8,6 +8,7 @@ objects1 = strtoint.o
 objects2 = link_list.o
 objects3 = tree.o
 objects4 = operator.o
+objects5 = array2search.o
 
 strtoint:$(objects1)
 	$(CC) -o strtoint $(objects1)
@@ -33,8 +34,14 @@ operator:$(objects4)
 operator.o: operator.cpp
 	$(CC+) -c operator.cpp
 
+array2search:$(objects5)
+	$(CC+) -o array2search $(objects5)
+
+array2search.o: array2search.c
+	$(CC) -c array2search.c
+
 
 clean :
-	rm *.o strtoint link_list tree operator
+	rm *.o strtoint link_list tree operator array2search
 
 
