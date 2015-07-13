@@ -169,8 +169,23 @@ void NoRecur_LastVisitOrder(Tree * T)
     }
 }
 
+class A
+{
+    public:
+        A();
+        virtual ~A();
+        void haha()
+        {
+            printf("fd\n");
+        }
+    private:
+        int a;
+};
+
 int main()
 {
+    printf("%d\n",sizeof(A));
+    return 0;
     Tree * T;
     Tree::CreatTree(T);
     //PreOrderVisit(T);
