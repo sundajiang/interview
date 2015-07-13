@@ -96,6 +96,7 @@ void NoRecur_PreVisitOrder(Tree * T)
     p = T;
     //当p不为空时压栈（保存回退路径），指左；当p为空时，出栈（回退），指右
     //注意，p是栈顶节点的左孩子
+    //左边全部出栈之后右边才能入栈
     while(!S.empty() || p !=NULL)
     {
         if(p)
@@ -113,8 +114,9 @@ void NoRecur_PreVisitOrder(Tree * T)
         }
     }
 }
-
-void NoRecur_InVisitOrder(Tree * T)         //前序非递归遍历
+//中序非递归遍历
+//同样，左边全部出栈之后右边才能入栈，和前序不同的只是打印时机，这里是出栈时打印
+void NoRecur_InVisitOrder(Tree * T)
 {
     if(T == NULL)
         return;
@@ -136,7 +138,7 @@ void NoRecur_InVisitOrder(Tree * T)         //前序非递归遍历
         }
     }
 }
-
+//后序遍历和前两个差别较大，需要在压栈到最左之后判断p的右孩子是否为空，而不是p本身是否为空
 void NoRecur_LastVisitOrder(Tree * T)
 {
     std::stack<Tree*> S;
@@ -151,8 +153,10 @@ void NoRecur_LastVisitOrder(Tree * T)
             S.push(p);
             p = p->leftchild;
         }
-        p = S.top();    //经过前面步骤，p指向左边的NULL，所以需要返回栈顶元素（注意！！不弹出！！）
-        if(p->rightchild == NULL || p->rightchild == pre)//右子树为空或者右子树元素已经打印过，则打印本节点。
+        //经过前面步骤，p指向左边的NULL，所以需要返回栈顶元素（注意！！不弹出！！）
+        p = S.top();
+        //右子树为空或者右子树元素已经打印过，则打印本节点。否则转向右孩子，（以右孩子为基础）重新开始左到尽头的操作
+        if(p->rightchild == NULL || p->rightchild == pre)
         {
             printf("data = %c\n",p->data);
             pre = p;
