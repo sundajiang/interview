@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stdlib.h>
 #include<string.h>
+
 using namespace std;
 
 class CMyString
@@ -85,7 +86,8 @@ CMyString& CMyString::operator=(const CMyString& str)
 
 int main()
 {
-    CMyString str1("Hello World!");
+    char a[] = "Hello World!";
+    CMyString str1(a);
     CMyString str2;
     str2=str1;
 

@@ -184,7 +184,7 @@ class A
 
 int main()
 {
-    printf("%d\n",sizeof(A));
+    printf("%lu\n",sizeof(A));
     return 0;
     Tree * T;
     Tree::CreatTree(T);

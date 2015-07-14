@@ -83,7 +83,7 @@ int StrToInt(char *str)
 int main(int argc, char* argv[])
 {
     int a[] = {1,2,3,4};
-    printf("%d\n",sizeof(a));
+    printf("%lu\n",sizeof(a));
     return 0;
     int num;
     num = StrToInt("");
