@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stack>
 
 //如果传入指针，再任何情况下都要先判断是否为空指针！！
 //创建时要注意每个节点先申请空间在赋值
@@ -184,6 +185,81 @@ Node * reverse(Node * head)
     head->next = NULL;
     return p1;
 }
+//上面是有返回值的情况，这里使用无返回值情况，传入指针的引用，真实的链表头部指针会发生变化
+void reverse2(Node* &head)
+{
+    Node *p1,*p2,*p3;
+    if(head == NULL || head->next == NULL)
+        return ;
+    p1 = head;
+    p2 = p1->next;
+    while(p2)
+    {
+        p3 = p2->next;
+        p2->next = p1;
+        p1 = p2;
+        p2 = p3;
+    }
+    head->next = NULL;
+    head = p1;
+}
+//上面是有返回值的情况，这里使用无返回值情况，c语言无引用，传入指针的指针，真实的链表头部指针同样会会发生变化
+//*head代表真实的头部指针
+void reverse3(Node ** head)
+{
+    Node *p1,*p2,*p3;
+    if(*head == NULL || (*head)->next == NULL)
+        return ;
+    p1 = *head;
+    p2 = p1->next;
+    while(p2)
+    {
+        p3 = p2->next;
+        p2->next = p1;
+        p1 = p2;
+        p2 = p3;
+    }
+    (*head)->next = NULL;
+    *head = p1;
+}
+//从尾到头打印链表，不允许修改链表本身的结构（即不许反转链表）
+//思路1：可以使用栈来解决
+void print_rever(Node * head)
+{
+    if(head == NULL)
+    {
+        return;
+    }
+    std::stack<Node *> s;
+    Node * p;
+    while(p)
+    {
+        s.push(p);
+        p = p->next;
+    }
+    while(!s.empty())
+    {
+        p = s.top();
+        printf("%d\n",p->data);
+        s.pop();
+    }
+}
+//从尾到头打印链表，不允许修改链表本身的结构（即不许反转链表）
+//思路2：模仿栈，可以使用递归来解决,但是递归在链表很长的时候，调用层次会很深，容易函数调用栈溢出，鲁棒性不如使用栈结构
+void print_rever2(Node * head)
+{
+    if(head == NULL)
+    {
+        return;
+    }
+    Node * p = head;
+    while(p->next)
+    {
+        print_rever2(p->next);
+    }
+    printf("%d\n",p->data);
+}
+
 
 //求链表倒数第k个节点
 //要注意检查k
@@ -215,6 +291,7 @@ Node * findKthtotail(Node* head,int k)
     }
     return p2;
 }
+
 
 int main()
 {
