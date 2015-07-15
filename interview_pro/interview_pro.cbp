@@ -31,6 +31,27 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../array2search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../find.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../git_init.sh" />
+		<Unit filename="../git_push.sh" />
+		<Unit filename="../link_list.cpp" />
+		<Unit filename="../makefile" />
+		<Unit filename="../operator.cpp" />
+		<Unit filename="../replaceblack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../strtoint.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../tree.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

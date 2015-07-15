@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="../array2search.c" open="0" top="0" tabpos="0">
+		<Cursor position="1110" topLine="69" />
+	</File>
+	<File name="../find.c" open="1" top="0" tabpos="3">
+		<Cursor position="779" topLine="0" />
+	</File>
+	<File name="../git_init.sh" open="0" top="0" tabpos="0">
+		<Cursor position="247" topLine="0" />
+	</File>
+	<File name="../git_push.sh" open="1" top="0" tabpos="2">
+		<Cursor position="75" topLine="0" />
+	</File>
+	<File name="../link_list.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="5589" topLine="227" />
+	</File>
+	<File name="../makefile" open="1" top="0" tabpos="1">
+		<Cursor position="312" topLine="9" />
+	</File>
+	<File name="../operator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2616" topLine="60" />
+	</File>
+	<File name="../replaceblack.c" open="0" top="0" tabpos="0">
+		<Cursor position="1731" topLine="6" />
+	</File>
+	<File name="../sort.c" open="1" top="1" tabpos="4">
+		<Cursor position="2481" topLine="63" />
+	</File>
+	<File name="../strtoint.c" open="0" top="0" tabpos="0">
+		<Cursor position="2053" topLine="57" />
+	</File>
+	<File name="../tree.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="5988" topLine="31" />
+	</File>
+</CodeBlocks_layout_file>

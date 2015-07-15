@@ -64,6 +64,7 @@ void LastOrderVisit(Tree * T)
     }
 }
 //层序遍历每层压入队列（先进先出），记住三个函数，入队列push，返回首个pront，弹出首个pop。
+//注意，是一边出队列一边入队列，再统一个循环中
 void LayerOrderVisit(Tree * T)
 {
     if(T == NULL)
@@ -169,6 +170,59 @@ void NoRecur_LastVisitOrder(Tree * T)
     }
 }
 
+//题目：已知前序遍历和中序遍历，生成二叉树
+//思路：递归，传入参数分别为前序数组（不变），前序开始下标（可变），前序结束下标（可变）；后序数组，后序开始，后序结束；
+Tree * Convert(char pre[], int pre_s, int pre_e,
+              char in [], int in_s , int in_e )
+{
+
+    //要进行条件判断，此处缺失
+
+    Tree *p = new Tree;
+    p->data = pre[pre_s];
+    p->leftchild = p->rightchild = NULL;
+
+    //如果后序开始下标等于后序结束下标，则递归结束
+    if(in_s == in_e)
+    {
+        if(pre_s == pre_e || pre[pre_s] == in[in_s])
+        {
+            return p;
+        }
+        else
+        {
+            printf("error end\n");
+            return NULL;
+        }
+    }
+
+    //在中序遍历中找到根节点的值
+    int i = in_s;
+    for(i=in_s;i<=in_e&&in[i]!=pre[pre_s];i++);
+    if(i == in_e && in[i] != pre[pre_s])
+    {
+        printf("error find!\n");
+        return NULL;
+    }
+
+    //递归左子树,注意前序的末尾序号表示，要考虑in_s
+    pre_s = pre_s + 1;
+    pre_e = pre_s+i-in_s;
+    in_s = in_s;
+    in_e = i -1;
+    p->leftchild = Convert(pre, pre_s, pre_e,in,in_s,in_e);
+
+
+    //递归右子树，注意前序的开始序号表示
+    pre_s = pre_s+i-in_s+1;
+    pre_e = pre_e;
+    in_s = i+1;
+    in_e = in_e;
+    p->rightchild = Convert(pre, pre_s, pre_e,in,in_s,in_e);
+
+    return p;
+}
+
 class A
 {
     public:
@@ -184,8 +238,16 @@ class A
 
 int main()
 {
-    printf("%lu\n",sizeof(A));
+    char pre[]="abdc";
+    char in[]="bdac";
+    Tree *head = NULL;
+
+    //head = Convert(pre,0,strlen(pre)-1,in ,0,strlen(in)-1);
+
+    //InTranverse(head);
+
     return 0;
+
     Tree * T;
     Tree::CreatTree(T);
     //PreOrderVisit(T);
